@@ -175,12 +175,12 @@ export default function Projects() {
                 }}
             >
                 {/* Section Title */}
-                <div style={{ textAlign: 'left', marginBottom: '3rem' }}>
+                <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
                     <h2
                         style={{
                             fontSize: 'clamp(2rem, 5vw, 3rem)',
                             fontWeight: 700,
-                            marginBottom: '2rem',
+                            marginBottom: '1.75rem',
                             color: '#ffffff',
                             letterSpacing: '0.02em',
                         }}
@@ -192,8 +192,8 @@ export default function Projects() {
                     <div
                         style={{
                             display: 'flex',
-                            gap: '1rem',
                             flexWrap: 'wrap',
+                            gap: '0.75rem',
                             marginBottom: '2rem',
                         }}
                     >
@@ -202,29 +202,34 @@ export default function Projects() {
                                 key={index}
                                 onClick={() => setActiveFilter(filter)}
                                 style={{
-                                    padding: '0.75rem 1.5rem',
-                                    borderRadius: '25px',
-                                    border: 'none',
+                                    padding: '1rem 1.75rem',
+                                    borderRadius: '16px',
+                                    border: activeFilter === filter 
+                                        ? '1.5px solid rgba(139, 92, 246, 0.4)' 
+                                        : '1px solid rgba(255, 255, 255, 0.1)',
                                     background: activeFilter === filter
-                                        ? 'rgba(139, 92, 246, 0.3)'
+                                        ? 'linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(168, 85, 247, 0.2) 100%)'
                                         : 'rgba(255, 255, 255, 0.05)',
-                                    color: activeFilter === filter ? '#ffffff' : 'rgba(255, 255, 255, 0.6)',
-                                    fontSize: '0.95rem',
-                                    fontWeight: 500,
+                                    color: activeFilter === filter ? '#ffffff' : 'rgba(255, 255, 255, 0.7)',
+                                    fontSize: '0.875rem',
+                                    fontWeight: activeFilter === filter ? 600 : 500,
                                     cursor: 'pointer',
-                                    transition: 'all 0.3s ease',
+                                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                                     backdropFilter: 'blur(10px)',
+                                    boxShadow: activeFilter === filter 
+                                        ? '0 4px 16px rgba(139, 92, 246, 0.2)' 
+                                        : 'none',
                                 }}
                                 onMouseEnter={(e) => {
                                     if (activeFilter !== filter) {
-                                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                                        e.currentTarget.style.color = '#ffffff';
+                                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
                                     }
                                 }}
                                 onMouseLeave={(e) => {
                                     if (activeFilter !== filter) {
                                         e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-                                        e.currentTarget.style.color = 'rgba(255, 255, 255, 0.6)';
+                                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
                                     }
                                 }}
                             >
