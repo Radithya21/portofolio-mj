@@ -601,10 +601,12 @@ export default function LiquidEther({
                 this.line = new THREE.LineSegments(boundaryG, boundaryM);
                 if (this.scene) this.scene.add(this.line);
             }
-            update(params: any) {
-                this.uniforms.dt.value = params.dt;
-                if (this.line) this.line.visible = params.isBounce;
-                this.uniforms.isBFECC.value = params.BFECC;
+            update(params?: any) {
+                if (params) {
+                    this.uniforms.dt.value = params.dt;
+                    if (this.line) this.line.visible = params.isBounce;
+                    this.uniforms.isBFECC.value = params.BFECC;
+                }
                 super.update();
             }
         }
@@ -634,8 +636,8 @@ export default function LiquidEther({
                 this.mouse = new THREE.Mesh(mouseG, mouseM);
                 if (this.scene) this.scene.add(this.mouse);
             }
-            update(props: any) {
-                if (!this.mouse) return;
+            update(props?: any) {
+                if (!this.mouse || !props) return super.update();
                 const forceX = (Mouse.diff.x / 2) * props.mouse_force;
                 const forceY = (Mouse.diff.y / 2) * props.mouse_force;
                 const cursorSizeX = props.cursor_size * props.cellScale.x;
@@ -677,7 +679,8 @@ export default function LiquidEther({
                 });
                 this.init();
             }
-            update(params: any) {
+            update(params?: any) {
+                if (!params) return super.update();
                 let fbo_in, fbo_out;
                 this.uniforms.v.value = params.viscous;
                 for (let i = 0; i < params.iterations; i++) {
@@ -714,8 +717,10 @@ export default function LiquidEther({
                 });
                 this.init();
             }
-            update(params: any) {
-                this.uniforms.velocity.value = params.vel.texture;
+            update(params?: any) {
+                if (params) {
+                    this.uniforms.velocity.value = params.vel.texture;
+                }
                 super.update();
             }
         }
@@ -739,7 +744,8 @@ export default function LiquidEther({
                 });
                 this.init();
             }
-            update(params: any) {
+            update(params?: any) {
+                if (!params) return super.update();
                 let p_in, p_out;
                 for (let i = 0; i < params.iterations; i++) {
                     if (i % 2 === 0) {
@@ -775,9 +781,11 @@ export default function LiquidEther({
                 });
                 this.init();
             }
-            update(params: any) {
-                this.uniforms.velocity.value = params.vel.texture;
-                this.uniforms.pressure.value = params.pressure.texture;
+            update(params?: any) {
+                if (params) {
+                    this.uniforms.velocity.value = params.vel.texture;
+                    this.uniforms.pressure.value = params.pressure.texture;
+                }
                 super.update();
             }
         }
