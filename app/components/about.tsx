@@ -107,7 +107,7 @@ export default function About() {
                         }}
                     >
                         <Image
-                            src="/mj.jpg"
+                            src="/mj.JPG"
                             alt="Mutia Jummidayani Putri"
                             fill
                             style={{ objectFit: 'cover' }}
