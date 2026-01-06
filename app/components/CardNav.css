@@ -1,0 +1,161 @@
+.card-nav-container {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.card-nav {
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card-nav-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    height: 60px;
+}
+
+.hamburger-menu {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu:hover {
+    opacity: 0.8;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hamburger-menu.open .hamburger-line:first-child {
+    transform: translateY(4px) rotate(45deg);
+}
+
+.hamburger-menu.open .hamburger-line:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+}
+
+.logo-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    height: 30px;
+    width: auto;
+}
+
+.card-nav-content {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0 1rem 1rem;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.card-nav:not(.open) .card-nav-content {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.nav-card {
+    flex: 1;
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-height: 150px;
+}
+
+.nav-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(139, 92, 246, 0.4);
+}
+
+.nav-card-label {
+    display: none;
+}
+
+.nav-card-links {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.nav-card-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: inherit;
+    text-decoration: none;
+    opacity: 1;
+    transition: all 0.2s ease;
+    height: 100%;
+    letter-spacing: 0.02em;
+}
+
+.nav-card-link:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.nav-card-link-icon {
+    display: none;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .card-nav-container {
+        width: 95%;
+        max-width: 400px;
+    }
+
+    .card-nav-content {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .nav-card {
+        min-height: auto;
+        padding: 1.25rem;
+    }
+
+    .nav-card-label {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .nav-card-links {
+        gap: 0.5rem;
+    }
+
+    .nav-card-link {
+        font-size: 0.95rem;
+    }
+}
